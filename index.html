@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Git Playground — Aprenda Git jogando</title>
+  <meta name="description" content="Playground interativo de Git no navegador: terminal, editor, visualização de commits, desafios e gamificação.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b0f17'/%3E%3Cpath d='M10 7v13M10 20a4 4 0 0 0 4 4h4' stroke='%233ddc97' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='10' cy='7' r='3' fill='%233ddc97'/%3E%3Ccircle cx='22' cy='24' r='3' fill='%234cc9f0'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#/home" data-nav="home">
+    <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="url(#bg)"/><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3ddc97"/><stop offset="1" stop-color="#4cc9f0"/></linearGradient></defs><path d="M11 7.5v14M11 21.5a4 4 0 0 0 4 4h4" stroke="#0b0f17" stroke-width="2.6" fill="none" stroke-linecap="round"/><circle cx="11" cy="8" r="3" fill="#0b0f17"/><circle cx="22" cy="25.5" r="3" fill="#0b0f17"/></svg>
+    <span>git<b>playground</b></span>
+  </a>
+  <nav class="nav" id="nav">
+    <a href="#/home" data-nav="home">Início</a>
+    <a href="#/play" data-nav="play">Playground</a>
+    <a href="#/challenges" data-nav="challenges">Desafios</a>
+    <a href="#/dashboard" data-nav="dashboard">Progresso</a>
+    <a href="#/ranking" data-nav="ranking">Ranking</a>
+  </nav>
+  <div class="player" id="player" role="button" tabindex="0" title="Ver meu progresso">
+    <div class="streak" id="hdr-streak" data-tip="Desafios seguidos sem ver a solução">🔥 <b>0</b></div>
+    <div class="lvl-mini">
+      <div class="lvl-top"><span id="hdr-level">Nível 1</span><span id="hdr-xp">0 XP</span></div>
+      <div class="bar"><i id="hdr-bar"></i></div>
+    </div>
+    <div class="avatar" id="hdr-avatar">A</div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===================== INÍCIO ===================== -->
+  <section class="view" id="view-home">
+    <div class="hero">
+      <div class="hero-copy">
+        <span class="pill"><i class="dot"></i> Playground interativo · 100% no navegador</span>
+        <h1>Aprenda Git <span class="grad">jogando.</span></h1>
+        <p class="lead">Um playground interativo onde seus comandos <b>criam</b>, <b>quebram</b> e <b>recuperam</b> projetos — sem instalar nada e sem medo de errar.</p>
+        <div class="cta">
+          <button class="btn primary lg" id="cta-challenge">🚀 Começar desafio</button>
+          <button class="btn ghost lg" id="cta-play">💻 Abrir Playground</button>
+        </div>
+        <div class="hero-stats">
+          <div><b id="hs-ch">15</b><span>desafios</span></div>
+          <div><b>4</b><span>níveis</span></div>
+          <div><b>20</b><span>comandos Git</span></div>
+          <div><b>0</b><span>instalações</span></div>
+        </div>
+      </div>
+      <div class="hero-demo" aria-hidden="true">
+        <div class="demo-card">
+          <div class="demo-bar"><i></i><i></i><i></i><span>aluno@git-playground</span></div>
+          <div class="demo-term" id="demo-term"></div>
+          <div class="demo-graph" id="demo-graph"></div>
+        </div>
+        <div class="float-badge b1">+100 XP</div>
+        <div class="float-badge b2">🏆 Primeiro Commit</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="sec-title">Problema <span>→</span> Prática <span>→</span> Desafio <span>→</span> Gamificação <span>→</span> Aprendizado</h2>
+      <div class="journey">
+        <div class="step"><div class="step-ic">😰</div><h3>Problema</h3><p>Configurar o Git, entender comandos e ter medo de quebrar o projeto afastam quem está começando.</p></div>
+        <div class="step"><div class="step-ic">💻</div><h3>Prática</h3><p>Terminal, editor e arquivos reais no navegador. Cada comando reage visualmente na tela.</p></div>
+        <div class="step"><div class="step-ic">🧩</div><h3>Desafio</h3><p>Puzzles progressivos: de <code>git init</code> até conflitos de merge e recuperação de arquivos.</p></div>
+        <div class="step"><div class="step-ic">🎮</div><h3>Gamificação</h3><p>XP, níveis, conquistas, sequência diária e ranking para manter a motivação lá em cima.</p></div>
+        <div class="step"><div class="step-ic">🧠</div><h3>Aprendizado</h3><p>Erros viram explicações. Você entende o <i>porquê</i>, não só o comando.</p></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="feat-grid">
+        <div class="feat"><div class="feat-ic">⌨️</div><h3>Terminal que parece de verdade</h3><p>Prompt com branch, histórico, autocomplete com Tab, cores e respostas idênticas às do Git real.</p></div>
+        <div class="feat"><div class="feat-ic">🎬</div><h3>Veja o Git acontecendo</h3><p>Working Directory → Staging → Commit → Remote com animações e um grafo de commits clicável.</p></div>
+        <div class="feat"><div class="feat-ic">🛟</div><h3>Erros que ensinam</h3><p>Digitou <code>git commmit</code>? O playground explica o que aconteceu e sugere o caminho certo.</p></div>
+        <div class="feat"><div class="feat-ic">💡</div><h3>Dicas sem spoiler</h3><p>Dicas progressivas custam um pouco de XP — a solução só aparece depois da última.</p></div>
+        <div class="feat"><div class="feat-ic">🏆</div><h3>Conquistas e ranking</h3><p>Medalhas como "Sobreviveu ao Merge Conflict" e uma disputa amigável entre os alunos.</p></div>
+        <div class="feat"><div class="feat-ic">💾</div><h3>Nada se perde</h3><p>Progresso, arquivos e estado do repositório ficam salvos no seu navegador.</p></div>
+      </div>
+    </div>
+
+    <div class="final-cta">
+      <h2>Pronto para o seu primeiro commit?</h2>
+      <p>Leva menos de dois minutos. Prometemos que nenhum projeto real será danificado.</p>
+      <button class="btn primary lg" id="cta-challenge2">🚀 Começar desafio</button>
+    </div>
+  </section>
+
+  <!-- ===================== PLAYGROUND ===================== -->
+  <section class="view" id="view-play">
+    <div class="play">
+      <aside class="col col-left">
+        <div class="panel explorer">
+          <div class="panel-h">
+            <span>EXPLORADOR</span>
+            <div class="icon-btns">
+              <button class="ib" id="btn-newfile" data-tip="Novo arquivo" aria-label="Novo arquivo">＋📄</button>
+              <button class="ib" id="btn-newdir" data-tip="Nova pasta" aria-label="Nova pasta">＋📁</button>
+              <button class="ib" id="btn-delete" data-tip="Excluir selecionado" aria-label="Excluir">🗑</button>
+              <button class="ib" id="btn-project" data-tip="Projeto: reiniciar ou limpar" aria-label="Projeto">⋯</button>
+            </div>
+          </div>
+          <div class="proj-name" id="proj-name">📦 meu-projeto</div>
+          <div class="tree" id="tree"></div>
+          <div class="legend">
+            <span data-tip="Arquivo novo, o Git ainda não rastreia"><i class="bd u">U</i>novo</span>
+            <span data-tip="Modificado, ainda fora da Staging"><i class="bd m">M</i>modificado</span>
+            <span data-tip="Pronto para o próximo commit"><i class="bd s">●</i>staged</span>
+            <span data-tip="Conflito de merge"><i class="bd c">!</i>conflito</span>
+          </div>
+        </div>
+        <div class="panel gstate" id="gstate"></div>
+      </aside>
+
+      <section class="col col-mid">
+        <div class="panel editor">
+          <div class="tabs" id="tabs"></div>
+          <div class="editor-body" id="editor-body">
+            <div class="gutter" id="gutter"><div id="gutter-in"></div></div>
+            <div class="code-wrap">
+              <pre class="hl" id="hl" aria-hidden="true"><code id="hl-code"></code></pre>
+              <textarea id="editor" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off"></textarea>
+            </div>
+            <div class="editor-empty" id="editor-empty">
+              <div>📝</div><p>Abra um arquivo no explorador<br>ou crie um novo.</p>
+            </div>
+          </div>
+          <div class="editor-status" id="editor-status"><span id="es-file">—</span><span id="es-save">●  salvo</span></div>
+        </div>
+        <div class="panel terminal">
+          <div class="panel-h">
+            <span><i class="live"></i> TERMINAL GIT</span>
+            <div class="icon-btns">
+              <button class="ib txt" id="btn-term-help" data-tip="Comandos disponíveis">?</button>
+              <button class="ib txt" id="btn-term-clear" data-tip="Limpar terminal (Ctrl+L)">Limpar</button>
+            </div>
+          </div>
+          <div class="term-body">
+            <div class="term-out" id="term-out"></div>
+            <div class="term-in"><span id="term-prompt"></span><input id="term-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Terminal Git" placeholder="digite um comando… ex.: git status"></div>
+          </div>
+          <div class="quick" id="quick"></div>
+        </div>
+      </section>
+
+      <aside class="col col-right">
+        <div id="challenge-card"></div>
+        <div class="panel feedback">
+          <div class="panel-h"><span>💬 FEEDBACK</span><button class="ib txt" id="btn-fb-clear">Limpar</button></div>
+          <div class="fb-list" id="fb-list"></div>
+        </div>
+        <div class="panel pipeline">
+          <div class="panel-h"><span>🔭 FLUXO DO GIT</span></div>
+          <div class="pipe" id="pipe"></div>
+        </div>
+        <div class="panel graph">
+          <div class="panel-h"><span>🌳 GRAFO DE COMMITS</span><span class="muted" id="graph-hint">clique em um commit</span></div>
+          <div class="graph-scroll" id="graph"></div>
+        </div>
+        <div class="panel history">
+          <div class="panel-h"><span>🕘 HISTÓRICO</span><span class="muted" id="hist-count"></span></div>
+          <div class="hist-list" id="hist"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================== DESAFIOS ===================== -->
+  <section class="view" id="view-challenges">
+    <div class="page">
+      <div class="page-head">
+        <div><h1>Desafios Git</h1><p class="muted">Resolva puzzles usando comandos de verdade. Quanto menos dicas, mais XP.</p></div>
+        <button class="btn ghost" id="btn-free">💻 Modo livre</button>
+      </div>
+      <div id="daily"></div>
+      <div id="challenge-list"></div>
+    </div>
+  </section>
+
+  <!-- ===================== DASHBOARD ===================== -->
+  <section class="view" id="view-dashboard">
+    <div class="page" id="dashboard"></div>
+  </section>
+
+  <!-- ===================== RANKING ===================== -->
+  <section class="view" id="view-ranking">
+    <div class="page narrow" id="ranking"></div>
+  </section>
+</main>
+
+<div id="toasts" aria-live="polite"></div>
+<div id="modal-root"></div>
+<div id="fx"></div>
+
+<script src="js/storage.js"></script>
+<script src="js/git-engine.js"></script>
+<script src="js/challenges.js"></script>
+<script src="js/gamification.js"></script>
+<script src="js/terminal.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
